@@ -24,7 +24,7 @@ services:
     volumes:
       - db-data:/var/lib/mysql
       - ./arpab-app-Api/backend/dropfaci_arpab_2.sql:/docker-entrypoint-initdb.d/init.sql:ro
-
+      # per creare il db tramite il file .sql
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     environment:
