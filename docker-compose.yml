@@ -3,11 +3,11 @@ version: '3.9'
 services:
   backend:
     build:
-      context: ./arpab-app-Api
+      context: ./arpab-app-Api/backend
     ports:
       - '3001:3000' # Espone la porta 3000 del container come 3001 sull'host
     environment:
-      DB_HOST: db # host.docker.internal
+      DB_HOST: db
       DB_USER: root
       DB_PASSWORD: ''
       DB_NAME: dropfaci_arpab_2
@@ -23,6 +23,7 @@ services:
       - '3307:3306' # Espone la porta 3306 del container come 3307 sull'host
     volumes:
       - db-data:/var/lib/mysql
+      - ./arpab-app-Api/backend/dropfaci_arpab_2.sql:/docker-entrypoint-initdb.d/init.sql:ro
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
